@@ -21,3 +21,9 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             echo "Berhasil Connect ke Server"
+            
+            cd /home/dul/MKEPL-DATABASE
+            echo "Berhasil Masuk ke Folder"
+            
+            docker compose up -d # Start the Docker containers in detached mode
+            echo "Berhasil Jalankan Docker Compose"
