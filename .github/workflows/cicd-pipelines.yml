@@ -1,0 +1,23 @@
+name: CICD Database Dev to Prod
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  db_cicd:
+    name: Database CI/CD
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout  My Code
+        uses: actions/checkout@v4 #checkout the code from the repository
+
+      - name: Execute remote SSH commands using password
+        uses: appleboy/ssh-action@v1 # SSH action to run commands on a remote server
+        with:
+          host: ${{ secrets.SERVER_HOST }} # The remote server's IP address or hostname
+          username: ${{ secrets.SERVER_USER }} # The username to log in to the remote server
+          password: ${{ secrets.SERVER_PASSWORD }} # The password for the remote server
+          port: ${{ secrets.PORT }}
+          script: |
+            echo "Berhasil Connect ke Server"
