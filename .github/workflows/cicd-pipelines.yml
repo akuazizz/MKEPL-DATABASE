@@ -27,3 +27,9 @@ jobs:
 
             sudo docker compose up -d # Start the Docker containers in detached mode
             echo "Berhasil Jalankan Docker Compose"
+
+            # CI (Continuous Integration) untuk Database
+            echo "Menunggu Server MySQL Siap"
+            sleep 30 # Wait for 30 seconds to ensure MySQL is ready
+
+            docker exec -i mysql_prod_container mysql -uroot -pTelkom123! -e "SHOW DATABASES;" # Show databases in MySQL
