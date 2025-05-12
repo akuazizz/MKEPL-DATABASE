@@ -32,4 +32,16 @@ jobs:
             echo "Menunggu Server MySQL Siap"
             sleep 30 # Wait for 30 seconds to ensure MySQL is ready
 
-            sudo docker exec -i mysql_prod_container mysql -uroot -pTelkom123! -e "SHOW DATABASES;" # Show databases in MySQL
+            sudo docker exec mysql_devel_container mysql -u root -pTelkom123! -e "SHOW DATABASES;" # Show databases in MySQL
+
+            # CD (Continuous Deployment) untuk Database
+            echo "DUMP DATABASE dari mysql_devel"
+            sudo docker exec mysql_devel_container sh -c "mysqldump -u root -pTelkom123! academics_devel" > dump.sql
+
+            echo "Copy dump ke mysql_prod"
+            sudo docker cp mysql_prod_container:/tap/dump.sql
+
+            echo "Import dump ke mysql_prod"
+            sudo docker exec mysql_prod_container sh -c "mysql -u root -pTelkom123! academics < /tap/dump.sql"
+
+            echo "Berhasil Import ke mysql_prod"
