@@ -38,7 +38,7 @@ jobs:
                 git pull origin main
             else
                 echo "📦 Cloning repo for the first time..."
-                git clone https://github.com/akuazizz/MKEPL-DATABASE.git .
+                git clone https://github.com/akuazizz/MKEPL-DATABASE.git
             fi
 
             echo "✅ Deployment finished at $(date)"
