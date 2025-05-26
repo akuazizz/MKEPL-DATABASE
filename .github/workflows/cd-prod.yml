@@ -19,14 +19,14 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           script: |
-          echo "Berhasil Connect ke Server"
-          if [ -d "/home/dul" ]; then
-            echo "Folder /home/dul ditemukan"
-            cd /home/dul
-            echo "Berhasil Masuk ke Folder"
-          else
-            echo "Folder /home/dul tidak ditemukan, membuat folder..."
-            sudo mkdir /home/dul
-            echo "Berhasil Masuk ke Folder"
-            cd /home/dul
-          fi
+            echo "Berhasil Connect ke Server"
+            if [ -d "/home/dul" ]; then
+              echo "Folder /home/dul ditemukan"
+              cd /home/dul
+              echo "Berhasil Masuk ke Folder"
+            else
+              echo "Folder /home/dul tidak ditemukan, membuat folder..."
+              sudo mkdir /home/dul
+              echo "Berhasil Masuk ke Folder"
+              cd /home/dul
+            fi
