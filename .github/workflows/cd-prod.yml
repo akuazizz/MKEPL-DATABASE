@@ -30,3 +30,15 @@ jobs:
               echo "Berhasil Masuk ke Folder"
               cd /home/dul
             fi
+
+            if [ -d ".git" ]; then
+              echo "📦 Repo exists, pulling latest changes..."
+              
+                git remote set-url origin https://github.com/akuazizz/MKEPL-DATABASE.git
+                git pull origin main
+            else
+                echo "📦 Cloning repo for the first time..."
+                git clone https://github.com/akuazizz/MKEPL-DATABASE.git .
+            fi
+
+            echo "✅ Deployment finished at $(date)"
